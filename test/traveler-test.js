@@ -23,5 +23,7 @@ describe('Traveler', () => {
     traveler.findTrips()
     expect(traveler.trips).to.deep.equal([])
   }
-
+  it('should be able to calculate the amount the user spent in the last year'), () =>{
+    expect(traveler.calculateAmountSpentInAYear()).to.equal(333)
+  }
 })

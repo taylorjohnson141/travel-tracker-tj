@@ -1,5 +1,5 @@
 class Trips {
-  constructor(id,travelData,destinationData) {
+  constructor(id, travelData, destinationData) {
     this.currentUserId = id;
     this.travelData = travelData
     this.destinationData = destinationData
@@ -10,14 +10,17 @@ class Trips {
       return trip.userID === this.currentUserId
     })
   }
-    formatTripsAndDestination() {
-      this.currentUserTrips.forEach(trip => { 
-       correctDestination =  destinationData.find(destination =>{
+  formatTripsAndDestination() {
+    this.currentUserTrips.forEach(trip => { 
+      let correctDestination =  this.destinationData.find(destination =>{
         return destination.id === trip.destinationID
-       })
-       trip.destination = correctDestination
       })
-    }
+      trip.destination = correctDestination
+    })
   }
-
+  // findCost(trip) {
+  //   trip.
+  // }
 }
+export default Trips
+

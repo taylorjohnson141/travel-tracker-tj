@@ -10,20 +10,20 @@ describe('Traveler', () => {
   it('should have an identifier', () =>{
     expect(traveler.id).to.equal(1)
   })
-  it('should have a name '), () =>{
+  it('should have a name ', () =>{
     expect(traveler.name).to.equal('Ham')
-  }
-  it('should have a type of traveler propetry'), () =>{
+  })
+  it('should have a type of traveler propetry', () =>{
     expect(traveler.type).to.equal('algo')
-  }
-  it('should have a trips property'), () =>{
+  })
+  it('should have a trips property', () =>{
     expect(traveler.trips).to.deep.equal([])
-  }
-  it('should be able to find the correct trips based on the id'), () =>{
+  })
+  it('should be able to find the correct trips based on the id', () =>{
     traveler.findTrips()
     expect(traveler.trips).to.deep.equal([])
-  }
-  it('should be able to calculate the amount the user spent in the last year'), () =>{
+  })
+  it('should be able to calculate the amount the user spent in the last year', () =>{
     expect(traveler.calculateAmountSpentInAYear()).to.equal(333)
-  }
+  })
 })

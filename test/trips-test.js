@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Trips from '../src/Trip.js'
+import Trips from '../src/Tripsa.js'
 const expect = chai.expect;
 
 describe('Trip', () => {

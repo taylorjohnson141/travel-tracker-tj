@@ -5,5 +5,11 @@ class Traveler {
     this.type = userData.travelerType;
     this.trips = UserTripData
   }
+  calculateAmountSpentInAYear() {
+    this.trips
+  }
+  findTripsThisYear (trips) {
+    
+  }
 }
 export default Traveler

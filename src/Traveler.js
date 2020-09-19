@@ -1,5 +1,5 @@
 class Traveler {
-  constructor(id) {
+  constructor(userData,UserTripData) {
     this.id = id
   }
 }

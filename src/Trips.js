@@ -10,5 +10,14 @@ class Trips {
       return trip.userID === this.currentUserId
     })
   }
+    formatTripsAndDestination() {
+      this.currentUserTrips.forEach(trip => { 
+       correctDestination =  destinationData.find(destination =>{
+        return destination.id === trip.destinationID
+       })
+       trip.destination = correctDestination
+      })
+    }
+  }
 
 }

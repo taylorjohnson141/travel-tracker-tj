@@ -24,5 +24,5 @@ describe('Trip', () => {
     trips.findUserTrips()
     trips.formatTripsAndDestination()
     trips.findCost(trips.currentUserTrips[0]).to.deep.equal()
-  }
+  })
 })

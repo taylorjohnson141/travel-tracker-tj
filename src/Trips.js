@@ -1,3 +1,6 @@
 class Trips {
-  constructor()
+  constructor(id,travelData,destinationData) {
+    this.currentUserId = id;
+    this.currentUserTrips;
+  }
 }

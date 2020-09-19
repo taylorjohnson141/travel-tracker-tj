@@ -10,7 +10,11 @@ describe('Traveler', () => {
   it('should have an identifier', () =>{
     expect(traveler.id).to.equal(1)
   })
-  it('should have a name'), () =>{
+  it('should have a name '), () =>{
     expect(traveler.name).to.equal('Ham')
   }
+  it('should have a type of traveler propetry'), () =>{
+    expect(traveler.type).to.equal('algo')
+  }
+  
 })

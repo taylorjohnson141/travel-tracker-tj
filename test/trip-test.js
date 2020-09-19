@@ -13,6 +13,12 @@ describe('Trip', () => {
   it('should be able to find the currect User Trips correctly',() =>{
     trips.findUserTrips()
     expect(trips.currentUserTrips).to.deep.equal()
+  })
+  it('should be able to foramt the data correctly',() =>{
+    trips.findUserTrips()
+    trips.formatTripsAndDestination()
+    expect(trips.currentUserTrips).to.deep.equal()
+
+
   }
-  
 })

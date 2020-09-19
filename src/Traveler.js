@@ -15,7 +15,7 @@ class Traveler {
   }
   findTripsThisYear (year = '2020') {
     return this.trips.filter(trip => {
-      trip.date.contains(year)
+      return  trip.date.includes(year)
     })
   }
 }

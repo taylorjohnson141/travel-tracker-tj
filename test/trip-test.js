@@ -14,11 +14,15 @@ describe('Trip', () => {
     trips.findUserTrips()
     expect(trips.currentUserTrips).to.deep.equal()
   })
-  it('should be able to foramt the data correctly',() =>{
+  it('should be able to format the data correctly',() =>{
     trips.findUserTrips()
     trips.formatTripsAndDestination()
     expect(trips.currentUserTrips).to.deep.equal()
 
-
+  })
+  it('should be able to calculate the cost of an individual trip',() =>{
+    trips.findUserTrips()
+    trips.formatTripsAndDestination()
+    trips.findCost(trips.currentUserTrips[0]).to.deep.equal()
   }
 })

@@ -6,10 +6,17 @@ class Traveler {
     this.trips = UserTripData
   }
   calculateAmountSpentInAYear() {
-    this.trips
+    let tripsInAYear = this.findTripsThisYear()
+    return tripsInAYear.reduce ((acc, curr) =>{
+      acc += curr.destination.estimatedLodgingCostPerDay
+      acc += (curr.travelers * curr.destination.estimatedFlightCostPerPerson)
+      return acc
+    }, 0)
   }
-  findTripsThisYear (trips) {
-    
+  findTripsThisYear (year = '2020') {
+    return this.trips.filter(trip => {
+      trip.date.contains(year)
+    })
   }
 }
 export default Traveler

@@ -16,5 +16,9 @@ describe('Traveler', () => {
   it('should have a type of traveler propetry'), () =>{
     expect(traveler.type).to.equal('algo')
   }
+  it('should have a trips property')
+  expect(traveler.trips).to.deep.equal([])
   
+  it('')
+
 })

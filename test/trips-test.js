@@ -1,16 +1,16 @@
 import chai from 'chai';
-import Trips from '../src/Tripsa.js'
+import Trips from '../src/Trips.js'
 const expect = chai.expect;
 let id = 1
 let TripData = [
-{"id":1,"userID":44,"destinationID":49,"travelers":1,"date":"2019/09/16","duration":8,"status":"approved","suggestedActivities":[]}, 
+{"id":1,"userID":1,"destinationID":1,"travelers":1,"date":"2019/09/16","duration":8,"status":"approved","suggestedActivities":[]}, 
 {"id":2,"userID":35,"destinationID":25,"travelers":5,"date":"2020/10/04","duration":18,"status":"pending","suggestedActivities":[]},
 {"id":3,"userID":3,"destinationID":22,"travelers":4,"date":"2020/05/22","duration":17,"status":"pending","suggestedActivities":[]},
-{"id":4,"userID":43,"destinationID":14,"travelers":2,"date":"2020/02/25","duration":10,"status":"approved","suggestedActivities":[]},
+{"id":4,"userID":1,"destinationID":2,"travelers":2,"date":"2020/02/25","duration":10,"status":"approved","suggestedActivities":[]},
 {"id":5,"userID":42,"destinationID":29,"travelers":3,"date":"2020/04/30","duration":18,"status":"approved","suggestedActivities":[]},
-{"id":6,"userID":29,"destinationID":35,"travelers":3,"date":"2020/06/29","duration":9,"status":"approved","suggestedActivities":[]},
+{"id":6,"userID":1,"destinationID":4,"travelers":3,"date":"2020/06/29","duration":9,"status":"approved","suggestedActivities":[]},
 {"id":7,"userID":37,"destinationID":17,"travelers":5,"date":"2020/5/28","duration":20,"status":"approved","suggestedActivities":[]},
-{"id":8,"userID":36,"destinationID":39,"travelers":6,"date":"2021/02/07","duration":4,"status":"approved","suggestedActivities":[]}
+{"id":8,"userID":36,"destinationID":5,"travelers":6,"date":"2021/02/07","duration":4,"status":"approved","suggestedActivities":[]}
 ];
 
 let destinationData = [
@@ -31,21 +31,112 @@ describe('Trip', () => {
     trips = new Trips(id, TripData, destinationData);
   });
   it('should contain an id',() =>{
-    expect(trips.id).to.equal(1)
+    expect(trips.currentUserId).to.equal(1)
   })
   it('should be able to find the currect User Trips correctly',() =>{
     trips.findUserTrips()
-    expect(trips.currentUserTrips).to.deep.equal()
+    expect(trips.currentUserTrips).to.deep.equal(
+      [
+        {
+          id: 1,
+          userID: 1,
+          destinationID: 1,
+          travelers: 1,
+          date: '2019/09/16',
+          duration: 8,
+          status: 'approved',
+          suggestedActivities: []
+        },
+        {
+          id: 4,
+          userID: 1,
+          destinationID: 2,
+          travelers: 2,
+          date: '2020/02/25',
+          duration: 10,
+          status: 'approved',
+          suggestedActivities: []
+        },
+        {
+          id: 6,
+          userID: 1,
+          destinationID: 4,
+          travelers: 3,
+          date: '2020/06/29',
+          duration: 9,
+          status: 'approved',
+          suggestedActivities: []
+        }
+      ]
+    )
   })
-  it('should be able to format the data correctly',() =>{
+  it('should be able to format the data correctly', () =>{
     trips.findUserTrips()
     trips.formatTripsAndDestination()
-    expect(trips.currentUserTrips).to.deep.equal()
+    console.log(trips.currentUserTrips)
+    expect(trips.currentUserTrips).to.deep.equal(
+      [
+        {
+          id: 1,
+          userID: 1,
+          destinationID: 1,
+          travelers: 1,
+          date: '2019/09/16',
+          duration: 8,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 1,
+            destination: 'Lima, Peru',
+            estimatedLodgingCostPerDay: 70,
+            estimatedFlightCostPerPerson: 400,
+            image: 'https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
+            alt: 'overview of city buildings with a clear sky'
+          }
+        },
+        {
+          id: 4,
+          userID: 1,
+          destinationID: 2,
+          travelers: 2,
+          date: '2020/02/25',
+          duration: 10,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 2,
+            destination: 'Stockholm, Sweden',
+            estimatedLodgingCostPerDay: 100,
+            estimatedFlightCostPerPerson: 780,
+            image: 'https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            alt: 'city with boats on the water during the day time'
+          }
+        },
+        {
+          id: 6,
+          userID: 1,
+          destinationID: 4,
+          travelers: 3,
+          date: '2020/06/29',
+          duration: 9,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 4,
+            destination: 'Cartagena, Colombia',
+            estimatedLodgingCostPerDay: 65,
+            estimatedFlightCostPerPerson: 350,
+            image: 'https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+            alt: 'boats at a dock during the day time'
+          }
+        }
+      ]
+    )
 
   })
-  it('should be able to calculate the cost of an individual trip',() =>{
-    trips.findUserTrips()
-    trips.formatTripsAndDestination()
-    trips.findCost(trips.currentUserTrips[0]).to.deep.equal()
-  })
+  // it('should be able to calculate the cost of an individual trip',() =>{
+  //   trips.findUserTrips()
+  //   trips.formatTripsAndDestination()
+  //   trips.findCost(trips.currentUserTrips[0]).to.deep.equal()
+  // })
 })

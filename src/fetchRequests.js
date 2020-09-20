@@ -6,7 +6,7 @@ class FetchRequests {
     this.DestinationData;
   }
   getData() {
-    Promise.all([
+   return Promise.all([
       `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${this.currentUserId}`,
       `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips`,
       `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations`
@@ -14,6 +14,10 @@ class FetchRequests {
       this.currentUserData = data[0]
       this.tripData = data[1]
       this.DestinationData = data[3]
+    })
+    .catch(err =>{
+      console.log(err)
+      alert('The server can not be reached right now, please try again later')
     })
   }
 }

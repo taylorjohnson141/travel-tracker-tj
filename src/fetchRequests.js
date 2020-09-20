@@ -6,7 +6,7 @@ class FetchRequests {
     this.DestinationData;
   }
   getData() {
-   return Promise.all([
+    return Promise.all([
       `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${this.currentUserId}`,
       `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips`,
       `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations`
@@ -21,3 +21,4 @@ class FetchRequests {
       })
   }
 }
+export default FetchRequests

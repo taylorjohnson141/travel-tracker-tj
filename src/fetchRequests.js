@@ -15,9 +15,9 @@ class FetchRequests {
       this.tripData = data[1]
       this.DestinationData = data[3]
     })
-    .catch(err =>{
-      console.log(err)
-      alert('The server can not be reached right now, please try again later')
-    })
+      .catch(err =>{
+        console.log(err)
+        alert('The server can not be reached right now, please try again later')
+      })
   }
 }

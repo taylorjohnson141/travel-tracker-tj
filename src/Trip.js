@@ -1,38 +1,36 @@
 
 class Trip {
-  constructor(currentUserId,id dataForTrip,tripData, destinationData) {
+  constructor(currentUserId, id, dataForTrip, tripData, destinationData) {
     this.currentUserId = currentUserId
     this.id= this.findID()
-    this.tripData;
+    this.tripData = tripData
     this.dataForTrip = dataForTrip;
     this.destinationData = destinationData;
-    this.estimatedCost;
+    this.estimatedCost = this.calculateEstimatedCost()
   }
-  calculateEstimatedCost(){
-    currectDestination = destinationData.find(destination =>{
+  calculateEstimatedCost() {
+    let currectDestination = this.destinationData.find(destination => {
       this.destinationData.name === destination.destination
     })
-    this.estimatedCost += curr.destination.estimatedLodgingCostPerDay
-    this.estimatedCost += (curr.travelers * curr.destination.estimatedFlightCostPerPerson)
+    this.estimatedCost += curr.destination.estimatedLodgingCostPerDay 
+    this.estimatedCost += (dataForTrip.travelers * curr.destination.estimatedFlightCostPerPerson)
     return this.estimatedCost
   }
-   findID (){
-    return tripData.reduce((acc,trip) => {
-      if(acc === trip.id){
+  findID () {
+    return this.tripData.reduce((acc, trip) => {
+      if (acc === trip.id) {
         acc += this.findUniqueValue(trip.id,acc)
-      }
-      else{
+      } else {
         return acc
       }
-    },0)
-   }
-   findUniqueValue(trip,value){
-    value +=1
-     if(trip === value){
-      return this.findUniqueValue(trip,value)
-     }
-     else{
-       return value
-     }
-   }
+    }, 0)
+  }
+  findUniqueValue(trip, value) {
+    value += 1
+    if (trip === value) {
+      return this.findUniqueValue(trip, value)
+    } else {
+      return value
+    }
+  }
 }

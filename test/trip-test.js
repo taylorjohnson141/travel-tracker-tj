@@ -23,6 +23,6 @@ describe('Trip', () => {
     expect(trip).to.equal(2)
   })
   it('should always have a status of pending', () => {
-
+    expect(trip.status).to.equal('pending')
   })
 })

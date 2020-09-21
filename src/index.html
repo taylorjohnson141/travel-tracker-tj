@@ -5,7 +5,22 @@
   </head>
   <body>
     <aside class ='user-info'></aside>
-    <form class = 'userInput'></form>
+    <button class = 'plan-another-trip'>Plan another Trip</button>
+    <form class = 'userInput hidden'>
+      <label for="destination">Choose a Destination:</label>
+      <select id="destination" name="destination">
+      </select>
+       <label for="numtrav">Start Date:</label>
+       <input type="date">
+
+       <label for="numtrav">End Date:</label>
+       <input type="date">
+
+      <label for="numtrav">How many Travelers:</label>
+      <input type="text" id="numtrav" name="numtrav">
+      <input type="submit">
+
+    </form>
     <header class ='top-page'>
       <div class = 'total-spent'> How Much Have you Spent this year :</div>
     </header>

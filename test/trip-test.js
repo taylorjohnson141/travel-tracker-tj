@@ -15,7 +15,14 @@ describe('Trip', () => {
   it('should contain an id', () =>{
     expect(trip.currentUserId).to.equal(2)
   })
-  it('should calculate the correct estimated price for the trip',() =>{
+  it('should calculate the correct estimated price for the trip', () =>{
     expect(trip.calculatedEstimatedPrice()).to.equal(2)
+  })
+  it('should return the correct formatted data', () =>{
+    trip.formatData()
+    expect(trip).to.equal(2)
+  })
+  it('should always have a status of pending', () => {
+
   })
 })

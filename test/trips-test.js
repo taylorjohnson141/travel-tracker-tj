@@ -25,7 +25,7 @@ let destinationData = [
   {"id": 9, "destination":"Amsterdam, Netherlands","estimatedLodgingCostPerDay":100,"estimatedFlightCostPerPerson":950,"image": "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", "alt": "canal with boats and trees and buildings along the side"},
   {"id": 10, "destination":"Toronto, Canada","estimatedLodgingCostPerDay":90,"estimatedFlightCostPerPerson":450,"image": "https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80"}
 ];
-describe('Trip', () => {
+describe('Trips', () => {
   let trips;
   beforeEach(() => {
     trips = new Trips(id, TripData, destinationData);
@@ -33,7 +33,7 @@ describe('Trip', () => {
   it('should contain an id',() =>{
     expect(trips.currentUserId).to.equal(1)
   })
-  it('should be able to find the currect User Trips correctly',() =>{
+  it('should be able to find the currect User Trips correctly', () =>{
     trips.findUserTrips()
     expect(trips.currentUserTrips).to.deep.equal(
       [

@@ -4,13 +4,14 @@
 section{
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
+grid-gap:10px;
 }
 article{
   grid-template-columns: 1fr 1fr 1fr;
 
 }
 img{
-  width:300px;
+  width:29em;
 }
 
 .single-recipe-card{

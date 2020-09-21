@@ -1,13 +1,24 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 // $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 // ;
-div{
-display: grid;
-grid-template-rows: 1fr 1fr 1fr;
-}
 section{
-  color:red
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-gap:10px;
 }
+article{
+  grid-template-columns: 1fr 1fr 1fr;
+
+}
+img{
+  width:29em;
+}
+
+.single-recipe-card{
+  background-color: cornsilk;
+}
+
+
 // body {
 //   background: $primary-background;
 // }

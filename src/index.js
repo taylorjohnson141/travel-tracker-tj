@@ -10,17 +10,18 @@ import Trips from './Trips';
 let currentUser;
 
 window.onload = () =>{
-let currentFetch = new FetchRequests(1)
+let currentFetch = new FetchRequests(3)
 currentFetch.getData().then(() => {
 let tripData = currentFetch.tripData.trips
 let destinationData = currentFetch.destinationData.destinations
-let newTrip = new Trips(1, tripData, destinationData)
+let newTrip = new Trips(3, tripData, destinationData)
 newTrip.findUserTrips()
 newTrip.formatTripsAndDestination()
 let currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
 console.log(currentUser)
 domUpdates.addDestinations(currentUser.trips)
 domUpdates.showAmountSpentInAYear(currentUser)
+newTrip.findStatus()
 })
 }
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)

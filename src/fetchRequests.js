@@ -1,19 +1,50 @@
+import Traveler from "./Traveler";
+
 class FetchRequests {
   constructor(id) {
     this.currentUserId = id
     this.currentUserData;
     this.tripData;
-    this.DestinationData;
+    this.destinationData;
+  }
+  userFetch() {
+    return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${this.currentUserId}`)
+      .then(travelerResponse =>{
+        return travelerResponse.json()
+      })
+      .then(travelerData =>{
+        return travelerData
+      })
+  }
+  tripFetch() {
+    return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips`)
+      .then(tripResponse =>{
+        return tripResponse.json()
+      })
+      .then(tripData =>{
+        return tripData
+      })
+  }
+  destinationFetch() {
+    return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations`)
+      .then(destinationResponse =>{
+        return destinationResponse.json()
+      })
+      .then(destinationData =>{
+        console.log(destinationData)
+        return destinationData
+      })
+      
   }
   getData() {
     return Promise.all([
-      `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${this.currentUserId}`,
-      `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips`,
-      `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations`
+      this.userFetch(),
+      this.tripFetch(),
+      this.destinationFetch()
     ]).then(data =>{
       this.currentUserData = data[0]
       this.tripData = data[1]
-      this.DestinationData = data[3]
+      this.destinationData = data[2]
     })
       .catch(err =>{
         console.log(err)

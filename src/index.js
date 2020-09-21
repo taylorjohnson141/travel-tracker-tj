@@ -20,6 +20,7 @@ newTrip.formatTripsAndDestination()
 let currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
 console.log(currentUser)
 domUpdates.addDestinations(currentUser.trips)
+domUpdates.showAmountSpentInAYear(currentUser)
 })
 }
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)

@@ -9,18 +9,27 @@ class FetchRequests {
   }
   userFetch() {
     return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${this.currentUserId}`)
-      .then(traveler =>{
-        return traveler
+      .then(travelerResponse =>{
+        return travelerResponse.json()
+      })
+      .then(travelerData =>{
+        return travelerData
       })
   }
   tripFetch() {
     return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips`)
+      .then(tripResponse =>{
+        return tripResponse.json()
+      })
       .then(tripData =>{
         return tripData
       })
   }
   destinationFetch() {
     return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations`)
+      .then(destinationResponse =>{
+        destinationResponse.json()
+      })
       .then(destinationData =>{
         return destinationData
       })

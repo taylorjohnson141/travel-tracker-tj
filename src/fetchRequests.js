@@ -28,11 +28,13 @@ class FetchRequests {
   destinationFetch() {
     return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations`)
       .then(destinationResponse =>{
-        destinationResponse.json()
+        return destinationResponse.json()
       })
       .then(destinationData =>{
+        console.log(destinationData)
         return destinationData
       })
+      
   }
   getData() {
     return Promise.all([
@@ -42,7 +44,7 @@ class FetchRequests {
     ]).then(data =>{
       this.currentUserData = data[0]
       this.tripData = data[1]
-      this.destinationData = data[3]
+      this.destinationData = data[2]
     })
       .catch(err =>{
         console.log(err)

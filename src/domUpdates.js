@@ -3,6 +3,8 @@ let amountSpentThisYear = document.querySelector('.total-spent')
 let destinationSelecton = document.querySelector('#destination')
 let formButton = document.querySelector('.plan-another-trip')
 let form = document.querySelector('.userInput') 
+let logIn = document.querySelector('.log-in')
+let page = document.querySelector('.page')
 // let startDate = document.querySelector('#startDate')
 // let endDate = document.querySelector('#endDate')
 // let numOfTravelers = document.querySelector('#numtrav')
@@ -11,8 +13,11 @@ let confirmTrip = document.querySelector('.post-trip')
 let domUpdates = {
 
   addDestinations(userTravels) {
+    logIn.classList.add('hidden')
+    page.classList.remove('hidden')
     userTravelSection.innerHTML = ''
     userTravels.forEach(trip => {
+      console.log(trip)
       userTravelSection.innerHTML +=
       
       `<div>
@@ -50,5 +55,6 @@ let domUpdates = {
     confirmTrip.classList.toggle('hidden')
     
   }
+  
 }
 export default domUpdates

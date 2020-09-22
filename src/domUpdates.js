@@ -1,6 +1,7 @@
 let userTravelSection = document.querySelector('.user-travels')
 let amountSpentThisYear = document.querySelector('.total-spent')
 let destinationSelecton = document.querySelector('#destination')
+let formButton = document.querySelector('.plan-another-trip')
 let domUpdates = {
 
   addDestinations(userTravels) {
@@ -28,10 +29,11 @@ let domUpdates = {
     destinationSelecton.innerHTML +=  ''
     destinationData.forEach(destination =>{
       destinationSelecton.innerHTML +=  
-      `<select id="${destination.name}" name="${destination.name}">`
-
+      `<select id="${destination.name}" name="${destination.name}">`  
     })
-    
+  },
+  toggleForm() {
+    formButton.classList.toggle('hidden')
   }
 }
 export default domUpdates

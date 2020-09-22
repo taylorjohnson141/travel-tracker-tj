@@ -13,7 +13,7 @@ let TripData = [
 describe('Traveler', () => {
   let traveler;
   beforeEach(() => {
-    traveler = new Traveler(travelerData,TripData);
+    traveler = new Traveler(travelerData, TripData);
   });
   it('should have an identifier', () =>{
     expect(traveler.id).to.equal(1)

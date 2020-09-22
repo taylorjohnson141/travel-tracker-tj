@@ -6,6 +6,7 @@ let form= document.querySelector('.userInput')
 let startDate = document.querySelector('#startDate')
 let endDate = document.querySelector('#endDate')
 let numOfTravelers = document.querySelector('#numtrav')
+let estimatePrice = document.querySelector('.estimated-price')
 let domUpdates = {
 
   addDestinations(userTravels) {
@@ -39,6 +40,10 @@ let domUpdates = {
   toggleForm() {
     formButton.classList.toggle('hidden')
     form.classList.toggle('hidden')
+  },
+  showEstimatePrice(price) {
+    estimatePrice.classList.toggle('hidden')
+    estimatePrice.innerText+= price
   }
 }
 export default domUpdates

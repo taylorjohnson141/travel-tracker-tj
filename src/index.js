@@ -26,21 +26,12 @@ let currentUser;
 let destinationData;
 let tripData;
 let currentFetch;
-window.onload = () =>{
- currentFetch = new FetchRequests(3)
-currentFetch.getData().then(() => {
- tripData = currentFetch.tripData.trips
- destinationData = currentFetch.destinationData.destinations
-let newTrip = new Trips(3, tripData, destinationData)
-newTrip.findUserTrips()
-newTrip.formatTripsAndDestination()
- currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
-domUpdates.addDestinations(currentUser.trips)
-domUpdates.showAmountSpentInAYear(currentUser)
-newTrip.findStatus()
-})
+let currentUserId;
+// window.onload = () =>{
+ 
+// })
 
-}
+
 formButton.addEventListener('click', () =>{
   domUpdates.toggleForm()
   domUpdates.addDestinationsToCalender(destinationData)
@@ -81,16 +72,32 @@ submitTrip.addEventListener('click', ()=>{
   )
 })
 logInForm.addEventListener('submit', () =>{
+  console.log('algo')
   event.preventDefault()
-  console.log(checkValidity())
+  if (checkValidity()) {
+    currentFetch = new FetchRequests(currentUserId)
+    currentFetch.getData().then(() => {
+      tripData = currentFetch.tripData.trips
+      destinationData = currentFetch.destinationData.destinations
+      let newTrip = new Trips(currentUserId, tripData, destinationData)
+      newTrip.findUserTrips()
+      newTrip.formatTripsAndDestination()
+      currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
+      domUpdates.addDestinations(currentUser.trips)
+      domUpdates.showAmountSpentInAYear(currentUser)
+      newTrip.findStatus()
+    })
+  }
 })
 function checkValidity() {
   if (passwordInput.value !== 'travel2020') {
     return false
   }
-  if (userNameInput.value.splice(0,8) !== 'traveler' || Number(userNameInput.value.splice(-2)) > 50 || Number(userNameInput.value.splice(-2)) <= 0) {
+
+  if (userNameInput.value.slice(0, 8) !== 'traveler' || Number(userNameInput.value.slice(-2)) > 50 || Number(userNameInput.value.slice(-2)) <= 0) {
     return false
   }
+  currentUserId = Number(userNameInput.value.slice(-2))
   return true
 }
 

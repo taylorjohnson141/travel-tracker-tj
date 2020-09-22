@@ -50,8 +50,10 @@ userInput.addEventListener('submit', ()=>{
     let DataForTrip = {travelers: numOfTravelers.value, startDate: startDate.value , endDate: endDate.value, duration: diff, destination: destinationPick.value}
      console.log(tripData)
     pendingTrip = new Trip(3,DataForTrip,tripData,destinationData )
-     console.log(pendingTrip)
+    domUpdates.showEstimatePrice(pendingTrip.estimatedCost)
+    domUpdates.showSubmitButton()
   }
+  
 })
 function checkValues() {
   if (destinationPick.value === undefined

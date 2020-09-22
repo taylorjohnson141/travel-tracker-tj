@@ -7,6 +7,7 @@ let startDate = document.querySelector('#startDate')
 let endDate = document.querySelector('#endDate')
 let numOfTravelers = document.querySelector('#numtrav')
 let estimatePrice = document.querySelector('.estimated-price')
+let confirmTrip = document.querySelector('.post-trip')
 let domUpdates = {
 
   addDestinations(userTravels) {
@@ -43,7 +44,11 @@ let domUpdates = {
   },
   showEstimatePrice(price) {
     estimatePrice.classList.toggle('hidden')
-    estimatePrice.innerText+= price
+    estimatePrice.innerText += price
+  },
+  showSubmitButton() {
+    confirmTrip.classList.toggle('hidden')
+    
   }
 }
 export default domUpdates

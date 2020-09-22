@@ -9,6 +9,9 @@ import FetchRequests from './fetchRequests'
 import Traveler from './Traveler';
 import Trips from './Trips';
 import Trip from './Trip.js'
+let logInForm = document.querySelector('.user-Creditinatals')
+let userNameInput = document.querySelector('#userName')
+let passwordInput = document.querySelector('#password')
 let submitTrip = document.querySelector('.add-trip')
 let rejectTrip = document.querySelector('.reject-trip')
 let formButton = document.querySelector('.plan-another-trip')
@@ -77,6 +80,9 @@ submitTrip.addEventListener('click', ()=>{
   }
 
   )
+})
+logInForm.addEventListener('submit', () =>{
+
 })
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 

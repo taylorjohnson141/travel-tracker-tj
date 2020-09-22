@@ -1,6 +1,6 @@
 let userTravelSection = document.querySelector('.user-travels')
 let amountSpentThisYear = document.querySelector('.total-spent')
-
+let destinationSelecton = document.querySelector('#destination')
 let domUpdates = {
 
   addDestinations(userTravels) {
@@ -23,7 +23,15 @@ let domUpdates = {
   },
   showAmountSpentInAYear(traveler) {
     amountSpentThisYear.innerText += ` ${traveler.calculateAmountSpentInAYear()} dollars`  
-  }
+  },
+  addDestinationsToCalender(destinationData) {
+    destinationSelecton.innerHTML +=  ''
+    destinationData.forEach(destination =>{
+      destinationSelecton.innerHTML +=  
+      `<select id="${destination.name}" name="${destination.name}">`
 
+    })
+    
+  }
 }
 export default domUpdates

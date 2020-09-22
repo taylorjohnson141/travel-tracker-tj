@@ -28,7 +28,6 @@ class Trips {
       let array = trip.date.split('/')
       let correctDate = array.join('-')
       let tripDay = moment(correctDate);
-      console.log('day', tripDay)
       if (trip.status === 'pending' &&  !(tripDay < today)) {
         trip.status = 'pending'
       } else if (tripDay > today ) {

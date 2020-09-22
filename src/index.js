@@ -7,6 +7,7 @@ import domUpdates from './domUpdates'
 import FetchRequests from './fetchRequests'
 import Traveler from './Traveler';
 import Trips from './Trips';
+import Trip from './Trip.js'
 let currentUser;
 
 window.onload = () =>{
@@ -22,6 +23,7 @@ console.log(currentUser)
 domUpdates.addDestinations(currentUser.trips)
 domUpdates.showAmountSpentInAYear(currentUser)
 newTrip.findStatus()
+
 })
 }
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)

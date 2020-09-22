@@ -1,5 +1,12 @@
 let userTravelSection = document.querySelector('.user-travels')
 let amountSpentThisYear = document.querySelector('.total-spent')
+let destinationSelecton = document.querySelector('#destination')
+let formButton = document.querySelector('.plan-another-trip')
+let form= document.querySelector('.userInput') 
+let startDate = document.querySelector('#startDate')
+let endDate = document.querySelector('#endDate')
+let numOfTravelers = document.querySelector('#numtrav')
+let estimatePrice = document.querySelector('.estimated-price')
 let domUpdates = {
 
   addDestinations(userTravels) {
@@ -21,6 +28,22 @@ let domUpdates = {
     });
   },
   showAmountSpentInAYear(traveler) {
-    amountSpentThisYear.innerText += ` ${traveler.calculateAmountSpentInAYear()} dollars`  }
+    amountSpentThisYear.innerText += ` ${traveler.calculateAmountSpentInAYear()} dollars`  
+  },
+  addDestinationsToCalender(destinationData) {
+    destinationSelecton.innerHTML +=  ''
+    destinationData.forEach(destination =>{
+      destinationSelecton.innerHTML +=  
+      `<option value="${destination.destination}">${destination.destination}</option>`
+    })
+  },
+  toggleForm() {
+    formButton.classList.toggle('hidden')
+    form.classList.toggle('hidden')
+  },
+  showEstimatePrice(price) {
+    estimatePrice.classList.toggle('hidden')
+    estimatePrice.innerText+= price
+  }
 }
 export default domUpdates

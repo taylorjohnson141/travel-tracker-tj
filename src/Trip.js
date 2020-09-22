@@ -7,6 +7,7 @@ class Trip {
     this.dataForTrip = dataForRequestedTrip;
     this.travelers = dataForRequestedTrip.travelers
     this.status = 'pending'
+    this.duration;
     this.date = dataForRequestedTrip.startDate
     this.destinationData = destinationData;
     this.estimatedCost = this.calculateEstimatedCost()
@@ -21,6 +22,7 @@ class Trip {
     return acc
   }
   findID () {
+    console.log(this.tripData)
     return this.tripData.reduce((acc, trip) => {
       if (acc === trip.id || acc === 0) {
         acc += this.findUniqueValue(trip.id, acc)
@@ -28,7 +30,7 @@ class Trip {
         return acc
       }
       return acc
-    }, 0)
+    }, 1)
   }
   findUniqueValue(trip, value) {
     value += 1

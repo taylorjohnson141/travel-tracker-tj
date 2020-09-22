@@ -24,7 +24,6 @@ class Trip {
     return acc
   }
   findID () {
-    console.log(this.tripData)
     return this.tripData.reduce((acc, trip) => {
       if (acc === trip.id || acc === 0) {
         acc += this.findUniqueValue(trip.id, acc)
@@ -44,8 +43,7 @@ class Trip {
   }
   findDestinationID() {
     let correctDestination = this.destinationData.find(destination =>{
-      console.log('what we looking through', destination)
-      console.log('what are curr dest is', this.destination)
+     
       return  destination.destination === this.destination
 
     })

@@ -51,5 +51,23 @@ class FetchRequests {
         alert('The server can not be reached right now, please try again later')
       })
   }
+  postRequest(dataToPost) {
+    fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips`,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: { 
+          id: dataToPost.id, userID: dataToPost.currentUserId,
+          destinationID: dataToPost.destinationID, 
+          travelers: dataToPost.travelers, 
+          date: dataToPost.date,
+          duration: dataToPost.duration, 
+          status: 'pending', 
+          suggestedActivities: [],
+        }    
+      })
+  } 
 }
 export default FetchRequests

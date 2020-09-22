@@ -23,10 +23,7 @@ console.log(currentUser)
 domUpdates.addDestinations(currentUser.trips)
 domUpdates.showAmountSpentInAYear(currentUser)
 newTrip.findStatus()
-let DataForTrip = {travelers: 1, duration: 4, destination: "Lima, Peru"}
 
-let trip = new Trip(1,DataForTrip,tripData,destinationData)
-console.log(trip)
 })
 }
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)

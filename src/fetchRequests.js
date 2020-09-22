@@ -51,5 +51,33 @@ class FetchRequests {
         alert('The server can not be reached right now, please try again later')
       })
   }
+  postRequest(dataToPost) {
+    let data = this.createData(dataToPost)
+    return fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips`,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: "post",
+        body: JSON.stringify(data), 
+      }).then(Response => {
+      console.log(Response)
+    })
+  } 
+  createData(dataToPost) {
+    let date = dataToPost.dataForTrip.startDate.split('-')
+    let correctDate = date.join('/')
+    let data = { 
+      id: dataToPost.id, 
+      userID: dataToPost.currentUserId,
+      destinationID: dataToPost.DestinationID, 
+      travelers: Number(dataToPost.dataForTrip.travelers), 
+      date: correctDate,
+      duration: dataToPost.duration, 
+      status: 'pending', 
+      suggestedActivities: [],
+    }
+    return data
+  }
 }
 export default FetchRequests

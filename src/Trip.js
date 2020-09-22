@@ -4,12 +4,14 @@ class Trip {
     this.currentUserId = currentUserId
     this.tripData = allTripData
     this.id = this.findID()
+    this.destinationData = destinationData;
+    this.destination = dataForRequestedTrip.destination
+    this.DestinationID = this.findDestinationID()
     this.dataForTrip = dataForRequestedTrip;
     this.travelers = dataForRequestedTrip.travelers
     this.status = 'pending'
-    this.duration;
+    this.duration = dataForRequestedTrip.duration
     this.date = dataForRequestedTrip.startDate
-    this.destinationData = destinationData;
     this.estimatedCost = this.calculateEstimatedCost()
   }
   calculateEstimatedCost() {
@@ -39,6 +41,15 @@ class Trip {
     } else {
       return value
     }
+  }
+  findDestinationID() {
+    let correctDestination = this.destinationData.find(destination =>{
+      console.log('what we looking through', destination)
+      console.log('what are curr dest is', this.destination)
+      return  destination.destination === this.destination
+
+    })
+    return correctDestination.id
   }
   // getTrip() {
   //   this.trip.id = this.id

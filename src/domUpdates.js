@@ -29,7 +29,7 @@ let domUpdates = {
     });
   },
   showAmountSpentInAYear(traveler) {
-    amountSpentThisYear.innerText += ` ${traveler.calculateAmountSpentInAYear()} dollars`  
+    amountSpentThisYear.innerText = `How Much Have you Spent this year : ${traveler.calculateAmountSpentInAYear()} dollars`  
   },
   addDestinationsToCalender(destinationData) {
     destinationSelecton.innerHTML +=  ''

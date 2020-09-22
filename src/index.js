@@ -9,6 +9,8 @@ import FetchRequests from './fetchRequests'
 import Traveler from './Traveler';
 import Trips from './Trips';
 import Trip from './Trip.js'
+let submitTrip = document.querySelector('.add-trip')
+let rejectTrip = document.querySelector('.reject-trip')
 let formButton = document.querySelector('.plan-another-trip')
 let submitButton = document.querySelector('.submit')
 let userInput = document.querySelector('.userInput')
@@ -21,15 +23,16 @@ let pendingTrip;
 let currentUser;
 let destinationData;
 let tripData;
+let currentFetch;
 window.onload = () =>{
-let currentFetch = new FetchRequests(3)
+ currentFetch = new FetchRequests(3)
 currentFetch.getData().then(() => {
  tripData = currentFetch.tripData.trips
  destinationData = currentFetch.destinationData.destinations
 let newTrip = new Trips(3, tripData, destinationData)
 newTrip.findUserTrips()
 newTrip.formatTripsAndDestination()
-let currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
+ currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
 console.log(currentUser)
 domUpdates.addDestinations(currentUser.trips)
 domUpdates.showAmountSpentInAYear(currentUser)
@@ -47,8 +50,8 @@ userInput.addEventListener('submit', ()=>{
     let momStartDate = moment(startDate.value)
     let momEndDate = moment(endDate.value)
     let diff = momStartDate.diff(momEndDate, 'days') * -1
-    let DataForTrip = {travelers: numOfTravelers.value, startDate: startDate.value , endDate: endDate.value, duration: diff, destination: destinationPick.value}
-     console.log(tripData)
+    let DataForTrip = { travelers: numOfTravelers.value, startDate: startDate.value , endDate: endDate.value, duration: diff, destination: destinationPick.value}
+      console.log(tripData)
     pendingTrip = new Trip(3,DataForTrip,tripData,destinationData )
     domUpdates.showEstimatePrice(pendingTrip.estimatedCost)
     domUpdates.showSubmitButton()
@@ -70,5 +73,14 @@ function checkValues() {
     return true
   }
 }
+submitTrip.addEventListener('click', ()=>{
+  console.log('heheoooy')
+  currentFetch.postRequest(pendingTrip).then(response =>{
+    document.location.reload()
+
+  }
+
+  )
+})
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 

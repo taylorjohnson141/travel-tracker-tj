@@ -43,7 +43,7 @@ userInput.addEventListener('submit', ()=>{
     let momEndDate = moment(endDate.value)
     let diff = momStartDate.diff(momEndDate, 'days') * -1
     let DataForTrip = { travelers: numOfTravelers.value, startDate: startDate.value , endDate: endDate.value, duration: diff, destination: destinationPick.value}
-    pendingTrip = new Trip(3,DataForTrip,tripData,destinationData )
+    pendingTrip = new Trip(currentUserId,DataForTrip,tripData,destinationData )
     domUpdates.showEstimatePrice(pendingTrip.estimatedCost)
     domUpdates.showSubmitButton()
   }
@@ -66,7 +66,8 @@ function checkValues() {
 }
 submitTrip.addEventListener('click', ()=>{
   currentFetch.postRequest(pendingTrip).then( response =>{
-    document.location.reload()
+    getUserInfo()
+    console.log(pendingTrip)
   }
 
   )
@@ -75,18 +76,7 @@ logInForm.addEventListener('submit', () =>{
   console.log('algo')
   event.preventDefault()
   if (checkValidity()) {
-    currentFetch = new FetchRequests(currentUserId)
-    currentFetch.getData().then(() => {
-      tripData = currentFetch.tripData.trips
-      destinationData = currentFetch.destinationData.destinations
-      let newTrip = new Trips(currentUserId, tripData, destinationData)
-      newTrip.findUserTrips()
-      newTrip.formatTripsAndDestination()
-      currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
-      domUpdates.addDestinations(currentUser.trips)
-      domUpdates.showAmountSpentInAYear(currentUser)
-      newTrip.findStatus()
-    })
+    getUserInfo()
   }
 })
 function checkValidity() {
@@ -99,6 +89,21 @@ function checkValidity() {
   }
   currentUserId = Number(userNameInput.value.slice(-2))
   return true
+}
+function getUserInfo() {
+  currentFetch = new FetchRequests(currentUserId)
+    currentFetch.getData().then(() => {
+      tripData = currentFetch.tripData.trips
+      destinationData = currentFetch.destinationData.destinations
+      let newTrip = new Trips(currentUserId, tripData, destinationData)
+      newTrip.findUserTrips()
+      newTrip.formatTripsAndDestination()
+      currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
+      domUpdates.addDestinations(currentUser.trips)
+      domUpdates.showAmountSpentInAYear(currentUser)
+      newTrip.findStatus()
+      console.log('done')
+    })
 }
 
 

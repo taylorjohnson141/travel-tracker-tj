@@ -50,5 +50,6 @@ let domUpdates = {
     confirmTrip.classList.toggle('hidden')
     
   }
+  
 }
 export default domUpdates

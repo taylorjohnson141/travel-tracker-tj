@@ -18,7 +18,6 @@ let formButton = document.querySelector('.plan-another-trip')
 let submitButton = document.querySelector('.submit')
 let userInput = document.querySelector('.userInput')
 let destinationPick = document.querySelector('#destination')
-let form = document.querySelector('.userInput') 
 let startDate = document.querySelector('#startDate')
 let endDate = document.querySelector('#endDate')
 let numOfTravelers = document.querySelector('#numtrav')
@@ -82,7 +81,17 @@ submitTrip.addEventListener('click', ()=>{
   )
 })
 logInForm.addEventListener('submit', () =>{
-
+  event.preventDefault()
+  console.log(checkValidity())
 })
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+function checkValidity() {
+  if (passwordInput.value !== 'travel2020') {
+    return false
+  }
+  if (userNameInput.value.splice(0,8) !== 'traveler' || Number(userNameInput.value.splice(-2)) > 50 || Number(userNameInput.value.splice(-2)) <= 0) {
+    return false
+  }
+  return true
+}
+
 

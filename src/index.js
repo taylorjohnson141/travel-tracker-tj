@@ -33,7 +33,6 @@ let newTrip = new Trips(3, tripData, destinationData)
 newTrip.findUserTrips()
 newTrip.formatTripsAndDestination()
  currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
-console.log(currentUser)
 domUpdates.addDestinations(currentUser.trips)
 domUpdates.showAmountSpentInAYear(currentUser)
 newTrip.findStatus()
@@ -51,7 +50,6 @@ userInput.addEventListener('submit', ()=>{
     let momEndDate = moment(endDate.value)
     let diff = momStartDate.diff(momEndDate, 'days') * -1
     let DataForTrip = { travelers: numOfTravelers.value, startDate: startDate.value , endDate: endDate.value, duration: diff, destination: destinationPick.value}
-      console.log(tripData)
     pendingTrip = new Trip(3,DataForTrip,tripData,destinationData )
     domUpdates.showEstimatePrice(pendingTrip.estimatedCost)
     domUpdates.showSubmitButton()
@@ -74,10 +72,8 @@ function checkValues() {
   }
 }
 submitTrip.addEventListener('click', ()=>{
-  console.log('heheoooy')
-  currentFetch.postRequest(pendingTrip).then(response =>{
+  currentFetch.postRequest(pendingTrip).then( response =>{
     document.location.reload()
-
   }
 
   )

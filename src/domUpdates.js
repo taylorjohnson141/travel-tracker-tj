@@ -1,5 +1,6 @@
 let userTravelSection = document.querySelector('.user-travels')
 let amountSpentThisYear = document.querySelector('.total-spent')
+
 let domUpdates = {
 
   addDestinations(userTravels) {
@@ -21,6 +22,8 @@ let domUpdates = {
     });
   },
   showAmountSpentInAYear(traveler) {
-    amountSpentThisYear.innerText += ` ${traveler.calculateAmountSpentInAYear()} dollars`  }
+    amountSpentThisYear.innerText += ` ${traveler.calculateAmountSpentInAYear()} dollars`  
+  }
+
 }
 export default domUpdates

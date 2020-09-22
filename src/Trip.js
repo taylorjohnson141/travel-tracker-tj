@@ -28,7 +28,7 @@ class Trip {
         return acc
       }
       return acc
-    }, 0)
+    }, 1)
   }
   findUniqueValue(trip, value) {
     value += 1

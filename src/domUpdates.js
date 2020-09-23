@@ -6,31 +6,37 @@ let form = document.querySelector('.userInput')
 let logIn = document.querySelector('.log-in')
 let page = document.querySelector('.page')
 let userInfo = document.querySelector('.user-info')
+let title = document.querySelector('.title')
 import moment from 'moment'
 
-// let startDate = document.querySelector('#startDate')
-// let endDate = document.querySelector('#endDate')
-// let numOfTravelers = document.querySelector('#numtrav')
 let estimatePrice = document.querySelector('.estimated-price')
 let confirmTrip = document.querySelector('.post-trip')
 let domUpdates = {
 
-  addDestinations(userTravels,param = 'all') {
+  addDestinations(userTravels, param = 'all') {
     logIn.classList.add('hidden')
     page.classList.remove('hidden')
+    form.classList.add('hidden')
+    formButton.classList.remove('hidden')
+    this.revealTitle()
+    this.revealUserSection()
     userTravelSection.innerHTML = ''
     let travelsToShow = userTravels.filter(trip =>{
       return trip.status === param
     })
+    if (param === 'current trip') {
+      param = 'current'
+    }
     
     if (param === 'all') {
       travelsToShow = userTravels
     }
     if (travelsToShow.length === 0) {
-      return userTravelSection.innerHTML += `<h2>It looks like you need to go on another trip!</h2>`
+      title.innerHTML = `<h2>${param.charAt(0).toUpperCase() + param.slice(1) } trips </h2>`
+      return userTravelSection.innerHTML = `<h2>It looks like you need to go on another trip!</h2>`
     }
+    title.innerHTML = `<h2>${param.charAt(0).toUpperCase() + param.slice(1)} trips </h2>`
     travelsToShow.forEach(trip => {
-      console.log(trip)
       userTravelSection.innerHTML +=
       
       `<div>
@@ -63,9 +69,8 @@ let domUpdates = {
     form.classList.toggle('hidden')
   },
   showEstimatePrice(price) {
-    estimatePrice.innerText = ''
     estimatePrice.classList.toggle('hidden')
-    estimatePrice.innerText += `Estimated cost ${price}`
+    estimatePrice.innerText += `${price} dollars`
   },
   showSubmitButton() {
     confirmTrip.classList.toggle('hidden')
@@ -74,8 +79,21 @@ let domUpdates = {
   showUserName(currentUser) {
     userInfo.innerText = ''
     userInfo.innerText += `Welcome ${currentUser.name}!`
+  },
+  hideUserSection () {
+    userTravelSection.classList.add('hidden')
+
+  },
+  revealUserSection() {
+    userTravelSection.classList.remove('hidden')
+
+  },
+  hideTitle() {
+    title.classList.add('hidden')
+  },
+  revealTitle() {
+    title.classList.remove('hidden')
   }
 
-  
 }
 export default domUpdates

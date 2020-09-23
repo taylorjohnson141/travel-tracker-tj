@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import moment from 'moment'
 import './css/base.scss';
 import domUpdates from './domUpdates'
@@ -33,28 +29,30 @@ let destinationData;
 let tripData;
 let currentFetch;
 let currentUserId;
-// window.onload = () =>{
- 
-// })
 
 allTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips)
+  
 })
 pastTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'past')
+
 })
 pendingTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'pending')
+
 })
 currentTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'current trip')
 })
 futureTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'future')
-
+  
 })
 formButton.addEventListener('click', () =>{
   domUpdates.toggleForm()
+  domUpdates.hideUserSection()
+  domUpdates.hideTitle()
   domUpdates.addDestinationsToCalender(destinationData)
 })
 
@@ -97,6 +95,7 @@ submitTrip.addEventListener('click', ()=>{
     domUpdates.toggleForm()
     domUpdates.showEstimatePrice()
     domUpdates.showSubmitButton()
+    domUpdates.revealTitle()
   }
 
   )

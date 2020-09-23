@@ -21,6 +21,8 @@ let destinationPick = document.querySelector('#destination')
 let startDate = document.querySelector('#startDate')
 let endDate = document.querySelector('#endDate')
 let numOfTravelers = document.querySelector('#numtrav')
+let totalSpent = document.querySelector('.total-spent')
+
 let pendingTrip;
 let currentUser;
 let destinationData;
@@ -36,6 +38,7 @@ formButton.addEventListener('click', () =>{
   domUpdates.toggleForm()
   domUpdates.addDestinationsToCalender(destinationData)
 })
+
 userInput.addEventListener('submit', ()=>{
   event.preventDefault()
   if (checkValues()) {
@@ -120,10 +123,12 @@ function getUserInfo() {
       newTrip.formatTripsAndDestination()
       currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
       domUpdates.addDestinations(currentUser.trips)
-      domUpdates.showAmountSpentInAYear(currentUser)
       newTrip.findStatus()
       domUpdates.showUserName(currentUser)
     })
 }
+totalSpent.addEventListener('click', () =>{
+  domUpdates.showAmountSpentInAYear(currentUser)
+})
 
 

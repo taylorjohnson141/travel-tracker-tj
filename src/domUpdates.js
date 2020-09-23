@@ -6,6 +6,7 @@ let form = document.querySelector('.userInput')
 let logIn = document.querySelector('.log-in')
 let page = document.querySelector('.page')
 let userInfo = document.querySelector('.user-info')
+let totalSpent = document.querySelector('.total-spent')'total-spent'
 import moment from 'moment'
 
 // let startDate = document.querySelector('#startDate')

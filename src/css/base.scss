@@ -19,13 +19,15 @@ log-in{
 }
 img{
   width:29em;
+  height: 29em;
 }
 .wrapper{
   display: flex;
-  align-items: flex-end	
+  justify-content:space-around	
 }
 
-.single-recipe-card{
+.single-trip-card{
+  width: 29em;
   background-color: #FFFFF0;
 }
 .hidden{

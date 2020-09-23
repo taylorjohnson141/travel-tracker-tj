@@ -61,9 +61,7 @@ function checkValues() {
   console.log(startDate.value)
   let end = endDate.value
   let start =  startDate.value
-  console.log(start)
 
-  console.log(moment(end).isBefore(today))
   if (moment(end).isBefore(today) || moment(start).isBefore(today) || moment(start).isAfter(end) ) {
     alert('Dates are invalid')
   } else { 

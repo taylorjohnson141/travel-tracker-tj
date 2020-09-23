@@ -24,11 +24,11 @@ let domUpdates = {
       userTravelSection.innerHTML +=
       
       `<div>
-      <article id = ${trip.id} class="single-recipe-card ">
+      <article id = ${trip.id} class="single-trip-card">
          <article class="card-image-section">
            <img class="card-image" tabindex="0" src="${trip.destination.image}" alt= ${trip.destination.alt}>
          </article>
-        <article>${trip.date}- ${moment(trip.date).add(5, 'days').format('YYYY/MM/DD')}<article>
+        <h2>${trip.date}- ${moment(trip.date).add(5, 'days').format('YYYY/MM/DD')}<h2>
          <article class="trip-name-area">
 
            <h2 class="trip-name" tabindex="0">${trip.destination.destination} status : ${trip.status}</h2>

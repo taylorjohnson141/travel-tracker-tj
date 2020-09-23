@@ -57,8 +57,14 @@ function checkValues() {
   ) {
     alert('Please fill every prompt')
   }
-  let today = new Date()
-  if (endDate <= today || startDate < today || endDate < startDate ) {
+  let today = moment()
+  console.log(startDate.value)
+  let end = endDate.value
+  let start =  startDate.value
+  console.log(start)
+
+  console.log(moment(end).isBefore(today))
+  if (moment(end).isBefore(today) || moment(start).isBefore(today) || moment(start).isAfter(end) ) {
     alert('Dates are invalid')
   } else { 
     return true
@@ -67,27 +73,43 @@ function checkValues() {
 submitTrip.addEventListener('click', ()=>{
   currentFetch.postRequest(pendingTrip).then( response =>{
     getUserInfo()
-    console.log(pendingTrip)
+    userInput.reset()
+    domUpdates.toggleForm()
+    domUpdates.showEstimatePrice()
+    domUpdates.showSubmitButton()
   }
 
   )
 })
+rejectTrip.addEventListener('click', () =>{
+  userInput.reset()
+  domUpdates.toggleForm()
+  domUpdates.showEstimatePrice()
+  domUpdates.showSubmitButton()
+})
 logInForm.addEventListener('submit', () =>{
-  console.log('algo')
   event.preventDefault()
   if (checkValidity()) {
     getUserInfo()
+  } else {
+    alert('Wrong Credintials')
+    logInForm.reset()
   }
 })
 function checkValidity() {
   if (passwordInput.value !== 'travel2020') {
     return false
   }
-
+  let toCheck;
+ 
   if (userNameInput.value.slice(0, 8) !== 'traveler' || Number(userNameInput.value.slice(-2)) > 50 || Number(userNameInput.value.slice(-2)) <= 0) {
     return false
   }
-  currentUserId = Number(userNameInput.value.slice(-2))
+  if (userNameInput.value.length === 9) {
+    currentUserId = Number(userNameInput.value.slice(-1))
+  } else {
+    currentUserId = Number(userNameInput.value.slice(-2))
+  }
   return true
 }
 function getUserInfo() {
@@ -102,7 +124,7 @@ function getUserInfo() {
       domUpdates.addDestinations(currentUser.trips)
       domUpdates.showAmountSpentInAYear(currentUser)
       newTrip.findStatus()
-      console.log('done')
+      domUpdates.showUserName(currentUser)
     })
 }
 

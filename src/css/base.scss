@@ -16,14 +16,17 @@ article{
 log-in{
   display: flex;
   text-align: center;
-  background-color: crimson;
 }
 img{
   width:29em;
 }
+.wrapper{
+  display: flex;
+  align-items: flex-end	
+}
 
 .single-recipe-card{
-  background-color: cornsilk;
+  background-color: #FFFFF0;
 }
 .hidden{
   display: none;

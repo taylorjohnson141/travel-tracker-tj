@@ -25,7 +25,12 @@ img{
   display: flex;
   justify-content:space-around	
 }
-
+ul{
+  display: flex;
+  justify-content:space-around;
+  list-style: none;
+  font-size: 2em;
+}
 .single-trip-card{
   width: 29em;
   background-color: #FFFFF0;

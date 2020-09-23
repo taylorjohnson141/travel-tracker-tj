@@ -1,4 +1,3 @@
-import Traveler from "./Traveler";
 
 class FetchRequests {
   constructor(id) {

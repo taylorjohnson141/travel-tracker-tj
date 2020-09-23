@@ -1,3 +1,4 @@
+import moment from 'moment'
 let userTravelSection = document.querySelector('.user-travels')
 let amountSpentThisYear = document.querySelector('.total-spent')
 let destinationSelecton = document.querySelector('#destination')
@@ -7,10 +8,9 @@ let logIn = document.querySelector('.log-in')
 let page = document.querySelector('.page')
 let userInfo = document.querySelector('.user-info')
 let title = document.querySelector('.title')
-import moment from 'moment'
-
 let estimatePrice = document.querySelector('.estimated-price')
 let confirmTrip = document.querySelector('.post-trip')
+
 let domUpdates = {
 
   addDestinations(userTravels, param = 'all') {

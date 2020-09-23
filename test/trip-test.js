@@ -21,11 +21,14 @@ describe('Trip', () => {
   it('should give trip a unique id', () => {
     expect(trip.findID()).to.equal(2)
   })
-  // it('should return the correct formatted data', () =>{
-  //   trip.formatData()
-  //   expect(trip).to.equal(2)
-  // })
+  it('should give trip a correct unique id', () => {
+    expect(trip.findID()).to.not.equal(3)
+  })
+
   it('should always have a status of pending', () => {
     expect(trip.status).to.equal('pending')
+  })
+  it('should never be anything other than pending', () => {
+    expect(trip.status).to.not.equal('future')
   })
 })

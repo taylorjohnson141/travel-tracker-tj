@@ -1,3 +1,4 @@
+
 import moment from 'moment'
 import './css/base.scss';
 import domUpdates from './domUpdates'
@@ -11,7 +12,6 @@ let passwordInput = document.querySelector('#password')
 let submitTrip = document.querySelector('.add-trip')
 let rejectTrip = document.querySelector('.reject-trip')
 let formButton = document.querySelector('.plan-another-trip')
-let submitButton = document.querySelector('.submit')
 let userInput = document.querySelector('.userInput')
 let destinationPick = document.querySelector('#destination')
 let startDate = document.querySelector('#startDate')
@@ -69,25 +69,7 @@ userInput.addEventListener('submit', ()=>{
   }
   
 })
-function checkValues() {
-  if (destinationPick.value === undefined
-|| startDate.value === undefined
-|| endDate.value === undefined
-|| numOfTravelers.value === undefined
-  ) {
-    alert('Please fill every prompt')
-  }
-  let today = moment()
-  console.log(startDate.value)
-  let end = endDate.value
-  let start =  startDate.value
 
-  if (moment(end).isBefore(today) || moment(start).isBefore(today) || moment(start).isAfter(end) ) {
-    alert('Dates are invalid')
-  } else { 
-    return true
-  }
-}
 submitTrip.addEventListener('click', ()=>{
   currentFetch.postRequest(pendingTrip).then( response =>{
     getUserInfo()
@@ -115,11 +97,35 @@ logInForm.addEventListener('submit', () =>{
     logInForm.reset()
   }
 })
+
+totalSpent.addEventListener('click', () =>{
+  domUpdates.showAmountSpentInAYear(currentUser)
+})
+
+function checkValues() {
+  if (destinationPick.value === undefined
+|| startDate.value === undefined
+|| endDate.value === undefined
+|| numOfTravelers.value === undefined
+  ) {
+    alert('Please fill every prompt')
+  }
+  let today = moment()
+  console.log(startDate.value)
+  let end = endDate.value
+  let start =  startDate.value
+
+  if (moment(end).isBefore(today) || moment(start).isBefore(today) || moment(start).isAfter(end) ) {
+    alert('Dates are invalid')
+  } else { 
+    return true
+  }
+}
+
 function checkValidity() {
   if (passwordInput.value !== 'travel2020') {
     return false
   }
-  let toCheck;
  
   if (userNameInput.value.slice(0, 8) !== 'traveler' || Number(userNameInput.value.slice(-2)) > 50 || Number(userNameInput.value.slice(-2)) <= 0) {
     return false
@@ -133,20 +139,18 @@ function checkValidity() {
 }
 function getUserInfo() {
   currentFetch = new FetchRequests(currentUserId)
-    currentFetch.getData().then(() => {
-      tripData = currentFetch.tripData.trips
-      destinationData = currentFetch.destinationData.destinations
-      let newTrip = new Trips(currentUserId, tripData, destinationData)
-      newTrip.findUserTrips()
-      newTrip.formatTripsAndDestination()
-      currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
-      domUpdates.addDestinations(currentUser.trips)
-      newTrip.findStatus()
-      domUpdates.showUserName(currentUser)
-    })
+  currentFetch.getData().then(() => {
+    tripData = currentFetch.tripData.trips
+    destinationData = currentFetch.destinationData.destinations
+    let newTrip = new Trips(currentUserId, tripData, destinationData)
+    newTrip.findUserTrips()
+    newTrip.formatTripsAndDestination()
+    currentUser = new Traveler(currentFetch.currentUserData, newTrip.currentUserTrips)
+    domUpdates.addDestinations(currentUser.trips)
+    newTrip.findStatus()
+    domUpdates.showUserName(currentUser)
+  })
 }
-totalSpent.addEventListener('click', () =>{
-  domUpdates.showAmountSpentInAYear(currentUser)
-})
+
 
 

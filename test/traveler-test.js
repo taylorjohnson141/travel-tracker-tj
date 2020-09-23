@@ -24,13 +24,18 @@ describe('Traveler', () => {
   it('should have a type of traveler propetry', () =>{
     expect(traveler.type).to.equal('relaxer')
   })
+  it('should return correct traveler propetry', () =>{
+    expect(traveler.type).to.not.equal('fussy')
+  })
   it('should have a trips property', () =>{
     expect(traveler.trips).to.deep.equal(TripData)
   })
-  // it('should be able to find the correct trips based on the id', () =>{
-  //   traveler.addTrips()
-  //   expect(traveler.trips).to.deep.equal([''])
-  // })
+  it('should return correct trips property', () =>{
+    expect(traveler.trips).to.not.equal([])
+  })
+  it('should be able to calculate the amount the user spent in the last year correctly', () =>{
+    expect(traveler.calculateAmountSpentInAYear()).to.not.equal(509)
+  })
   it('should be able to calculate the amount the user spent in the last year', () =>{
     expect(traveler.calculateAmountSpentInAYear()).to.equal(600)
   })

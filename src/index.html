@@ -5,7 +5,9 @@
   </head>
   <body>
     <main class = 'log-in'>
+      <div class = 'adv'>
       <h2>Welcome to your next adventure!!</h2>
+    </div>
       <form class = 'user-Creditinatals'>
         <label for="userName">User Name</label>
         <input type="text" id="userName" name="userName">
@@ -15,31 +17,13 @@
     </main>
       </form>
       <main class ='page hidden'>
-        <section class ='wrapper'>
-        <h2 class ='user-info'></h2>
-        <h2 class = 'plan-another-trip'>Plan another Trip</h2>
-        <h2 class ='total-spent'>Click to see how Much You Spent this Year! </li>
+        <ul class ='wrapper'>
+        <li class ='user-info'></li>
+        <li class = 'plan-another-trip'>Plan another Trip</li>
+        <li class ='total-spent'>Click to see how Much You Spent this Year! </li>
 
-      </section>
-        <form class = 'userInput hidden'>
-          <label for="destination">Choose a Destination:</label>
-          <select id="destination" name="destination">
-          </select>
-          <label for="numtrav">Start Date:</label>
-          <input type="date" id ='startDate'>
-
-          <label for="numtrav">End Date:</label>
-          <input type="date" id ='endDate'>
-
-          <label for="numtrav">How many Travelers:</label>
-          <input type="text" id="numtrav" name="numtrav">
-          <input type="submit">
-
-        </form>
-        <h2 class = 'estimated-price hidden'>This Trip will cost around :</h2>
-        <section class = 'post-trip hidden'>Confirm Trip
-          <button class = 'add-trip'>Yes</button>
-          <button  class = 'reject-trip'>No</button>
+        </ul>
+       
         </section>
         <ul class ='top-page'>
         <li class ='all-trips'> All Trips</li>
@@ -47,10 +31,30 @@
         <li class = 'pending-trips'>Pending Trips</li>
         <li class = 'current-trips'>Current Trips</li>
         <li class = 'future-trips'>Future Trips</li>
-
         </ul>
-
+        <h2 class = 'title'></h2>
           <section class = 'user-travels'>
+          </section>
+          <form class = 'userInput hidden'>
+            <label for="destination">Choose a Destination:</label>
+            <select id="destination" name="destination">
+            </select>
+            <label for="numtrav">Start Date:</label>
+            <input type="date" id ='startDate'>
+  
+            <label for="numtrav">End Date:</label>
+            <input type="date" id ='endDate'>
+  
+            <label for="numtrav">How many Travelers:</label>
+            <input type="text" id="numtrav" name="numtrav">
+            <input type="submit">
+  
+          </form>
+          <h2 class = 'estimated-price hidden'>This Trip will cost around :</h2>
+          <section class = 'post-trip hidden'>
+            <h2>Confirm Trip</h2>
+            <button class = 'add-trip'>Yes</button>
+            <button  class = 'reject-trip'>No</button>
           </section>
       </main>
   </body>

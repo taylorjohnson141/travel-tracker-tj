@@ -32,22 +32,27 @@ let currentUserId;
 
 allTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips)
+  
 })
 pastTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'past')
+
 })
 pendingTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'pending')
+
 })
 currentTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'current trip')
 })
 futureTrips.addEventListener('click', () =>{
   domUpdates.addDestinations(currentUser.trips, 'future')
-
+  
 })
 formButton.addEventListener('click', () =>{
   domUpdates.toggleForm()
+  domUpdates.hideUserSection()
+  domUpdates.hideTitle()
   domUpdates.addDestinationsToCalender(destinationData)
 })
 
@@ -72,6 +77,7 @@ submitTrip.addEventListener('click', ()=>{
     domUpdates.toggleForm()
     domUpdates.showEstimatePrice()
     domUpdates.showSubmitButton()
+    domUpdates.revealTitle()
   }
 
   )

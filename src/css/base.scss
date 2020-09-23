@@ -1,13 +1,27 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-// ;
+@import 'mixins';
+@import 'variables';
+
 body{
   background-image: url('../images/pero-kalimero-9BJRGlqoIUk-unsplash.jpg');
+  padding: 0;
+  margin: 0;
 }
+
 section{
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 grid-gap:10px;
+}
+.wrapper{
+  background-color: $dark-color;
+  margin:.25em 0 .25em 0;
+  padding:.25em 0 .25em 0;
+  color:$light-color;
+}
+.top-page{
+  background-color: $darkest-color;
+  margin:0 0 .25em 0;
+  color:$light-color;
 }
 article{
   grid-template-columns: 1fr 1fr 1fr;
@@ -31,14 +45,56 @@ ul{
   list-style: none;
   font-size: 2em;
 }
+li:hover{
+  cursor: pointer; 
+}
+li:active{
+  background-color: $lighter-color;
+  
+}
+.title{
+  color:$light-color;
+}
 .single-trip-card{
   width: 29em;
-  background-color: #FFFFF0;
+  background-color: $light-color;
 }
 .hidden{
   display: none;
 }
+.log-in{
+  @include inputSetUp();
+  margin-top:10em;
+}
+.userInput{
+  @include inputSetUp();
+  padding-top: 5em;
+  margin-top:0;
+  height:400px;
+  width: 100%;
+}
+.adv{
+  @include inputSetUp()
+}
+h2{
+  margin-top: 0;
+}
+.add-trip{
+  @include confirmButtons()
+}
+.reject-trip{
+  @include confirmButtons()
+}
+.add-trip:hover{
+  background-color:$lighter-color
 
-// body {
-//   background: $primary-background;
-// }
+}
+.reject-trip:hover{
+  background-color:$lighter-color
+}
+.estimated-price{
+  background-color:#49C6E5;
+}
+.post-trip{
+  background-color:#49C6E5;
+}

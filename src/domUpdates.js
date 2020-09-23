@@ -6,7 +6,6 @@ let form = document.querySelector('.userInput')
 let logIn = document.querySelector('.log-in')
 let page = document.querySelector('.page')
 let userInfo = document.querySelector('.user-info')
-let totalSpent = document.querySelector('.total-spent')'total-spent'
 import moment from 'moment'
 
 // let startDate = document.querySelector('#startDate')
@@ -16,11 +15,21 @@ let estimatePrice = document.querySelector('.estimated-price')
 let confirmTrip = document.querySelector('.post-trip')
 let domUpdates = {
 
-  addDestinations(userTravels) {
+  addDestinations(userTravels,param = 'all') {
     logIn.classList.add('hidden')
     page.classList.remove('hidden')
     userTravelSection.innerHTML = ''
-    userTravels.forEach(trip => {
+    let travelsToShow = userTravels.filter(trip =>{
+      return trip.status === param
+    })
+    
+    if (param === 'all') {
+      travelsToShow = userTravels
+    }
+    if (travelsToShow.length === 0) {
+      return userTravelSection.innerHTML += `<h2>It looks like you need to go on another trip!</h2>`
+    }
+    travelsToShow.forEach(trip => {
       console.log(trip)
       userTravelSection.innerHTML +=
       
@@ -66,6 +75,7 @@ let domUpdates = {
     userInfo.innerText = ''
     userInfo.innerText += `Welcome ${currentUser.name}!`
   }
+
   
 }
 export default domUpdates

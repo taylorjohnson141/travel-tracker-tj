@@ -49,15 +49,7 @@ class Trip {
     })
     return correctDestination.id
   }
-  // getTrip() {
-  //   this.trip.id = this.id
-  //   this.trip.userID = this.currentUserId
-  //   this.trip.travelers = this.dataForTrip.travelers
-  //   this.trip.status = 'pending'
-  //   this.date = this.dataForTrip.startDate
-  //   //this.duration = start date - end date
-
-  // }
+ 
 }
 
 export default Trip

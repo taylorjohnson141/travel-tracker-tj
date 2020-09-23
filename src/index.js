@@ -22,7 +22,11 @@ let startDate = document.querySelector('#startDate')
 let endDate = document.querySelector('#endDate')
 let numOfTravelers = document.querySelector('#numtrav')
 let totalSpent = document.querySelector('.total-spent')
-
+let allTrips = document.querySelector('.all-trips')
+let pastTrips = document.querySelector('.past-trips')
+let pendingTrips = document.querySelector('.pending-trips')
+let currentTrips = document.querySelector('.current-trips')
+let futureTrips = document.querySelector('.future-trips')
 let pendingTrip;
 let currentUser;
 let destinationData;
@@ -33,7 +37,22 @@ let currentUserId;
  
 // })
 
+allTrips.addEventListener('click', () =>{
+  domUpdates.addDestinations(currentUser.trips)
+})
+pastTrips.addEventListener('click', () =>{
+  domUpdates.addDestinations(currentUser.trips, 'past')
+})
+pendingTrips.addEventListener('click', () =>{
+  domUpdates.addDestinations(currentUser.trips, 'pending')
+})
+currentTrips.addEventListener('click', () =>{
+  domUpdates.addDestinations(currentUser.trips, 'current trip')
+})
+futureTrips.addEventListener('click', () =>{
+  domUpdates.addDestinations(currentUser.trips, 'future')
 
+})
 formButton.addEventListener('click', () =>{
   domUpdates.toggleForm()
   domUpdates.addDestinationsToCalender(destinationData)

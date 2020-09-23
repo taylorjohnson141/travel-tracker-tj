@@ -5,6 +5,9 @@ let formButton = document.querySelector('.plan-another-trip')
 let form = document.querySelector('.userInput') 
 let logIn = document.querySelector('.log-in')
 let page = document.querySelector('.page')
+let userInfo = document.querySelector('.user-info')
+import moment from 'moment'
+
 // let startDate = document.querySelector('#startDate')
 // let endDate = document.querySelector('#endDate')
 // let numOfTravelers = document.querySelector('#numtrav')
@@ -21,12 +24,14 @@ let domUpdates = {
       userTravelSection.innerHTML +=
       
       `<div>
-      <article id = ${trip.id} class="single-recipe-card ">
+      <article id = ${trip.id} class="single-trip-card">
          <article class="card-image-section">
            <img class="card-image" tabindex="0" src="${trip.destination.image}" alt= ${trip.destination.alt}>
          </article>
-         <article class="recipe-name-area">
-           <h2 class="recipe-name" tabindex="0">${trip.destination.destination} status : ${trip.status}</h2>
+        <h2>${trip.date}- ${moment(trip.date).add(5, 'days').format('YYYY/MM/DD')}<h2>
+         <article class="trip-name-area">
+
+           <h2 class="trip-name" tabindex="0">${trip.destination.destination} status : ${trip.status}</h2>
          </article>
        </article>
        </div>
@@ -48,12 +53,17 @@ let domUpdates = {
     form.classList.toggle('hidden')
   },
   showEstimatePrice(price) {
+    estimatePrice.innerText = ''
     estimatePrice.classList.toggle('hidden')
-    estimatePrice.innerText += price
+    estimatePrice.innerText += `Estimated cost ${price}`
   },
   showSubmitButton() {
     confirmTrip.classList.toggle('hidden')
     
+  },
+  showUserName(currentUser) {
+    userInfo.innerText = ''
+    userInfo.innerText += `Welcome ${currentUser.name}!`
   }
   
 }

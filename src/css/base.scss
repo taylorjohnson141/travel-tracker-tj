@@ -1,6 +1,9 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 // $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 // ;
+body{
+  background-image: url('../images/pero-kalimero-9BJRGlqoIUk-unsplash.jpg');
+}
 section{
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
@@ -10,12 +13,22 @@ article{
   grid-template-columns: 1fr 1fr 1fr;
 
 }
+log-in{
+  display: flex;
+  text-align: center;
+}
 img{
   width:29em;
+  height: 29em;
+}
+.wrapper{
+  display: flex;
+  justify-content:space-around	
 }
 
-.single-recipe-card{
-  background-color: cornsilk;
+.single-trip-card{
+  width: 29em;
+  background-color: #FFFFF0;
 }
 .hidden{
   display: none;

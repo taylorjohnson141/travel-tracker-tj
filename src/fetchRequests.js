@@ -14,6 +14,8 @@ class FetchRequests {
       })
       .then(travelerData =>{
         return travelerData
+      }).catch(err =>{
+        alert(err)
       })
   }
   tripFetch() {
@@ -23,6 +25,8 @@ class FetchRequests {
       })
       .then(tripData =>{
         return tripData
+      }).catch(err =>{
+        alert(err)
       })
   }
   destinationFetch() {
@@ -33,6 +37,8 @@ class FetchRequests {
       .then(destinationData =>{
         console.log(destinationData)
         return destinationData
+      }).catch(err =>{
+        alert(err)
       })
       
   }
@@ -62,6 +68,8 @@ class FetchRequests {
         body: JSON.stringify(data), 
       }).then(Response => {
       console.log(Response)
+    }).catch(err =>{
+      alert(err)
     })
   } 
   createData(dataToPost) {

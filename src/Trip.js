@@ -25,8 +25,8 @@ class Trip {
   }
   findID () {
     return this.tripData.reduce((acc, trip) => {
-      if (acc === trip.id || acc === 0) {
-        acc += this.findUniqueValue(trip.id, acc)
+      if (acc === trip.id) {
+        acc = this.findUniqueValue(trip.id, acc)
       } else {
         return acc
       }
@@ -35,7 +35,7 @@ class Trip {
   }
   findUniqueValue(trip, value) {
     value += 1
-    if (trip === value || value === 0 ) {
+    if (trip === value) {
       return this.findUniqueValue(trip, value)
     } else {
       return value

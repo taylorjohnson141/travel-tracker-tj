@@ -26,4 +26,4 @@ In approaching the project I decided to appraoch classes and test driven develop
  ![Travel-Tracker-dashboard](./readme-assests/starting-screen.png)
 
 ## Wins / Learning Experiences
-Travel Tracker showed me that I need to plan out my UI and CSS more as well as implement Sass in a better way. I feel very strong in JavaScript but indeed up not giving myself enough time for Sass.
+Travel Tracker showed me that I need to plan out my UI and CSS more as well as implement Sass in a better way. I feel very strong in JavaScript but did not give myself enough time for Sass.
